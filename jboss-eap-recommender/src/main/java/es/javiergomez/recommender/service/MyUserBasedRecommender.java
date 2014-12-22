@@ -4,7 +4,11 @@ package es.javiergomez.recommender.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+
+import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
@@ -18,26 +22,27 @@ import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 
-
+@Stateless
 public class MyUserBasedRecommender implements MyRecommender {
 
-	private DataModel model;
+	private static DataModel model;
 
-	public MyUserBasedRecommender(String file) throws IOException {
+	public MyUserBasedRecommender() throws IOException {
 		super();
 //		 The first thing we have to do is load the data from the file
-		this.model = new FileDataModel(new File(file));
+		
+		URL res = MyUserBasedRecommender.class.getResource("/dataset.csv");
+
+		this.model = new FileDataModel(new File(res.getPath()));
 	}
 	
 	
 	/* (non-Javadoc)
 	 * @see es.javiergomez.recommender.MyRecommender#getRecommendations(java.lang.Integer, java.lang.Integer)
 	 */
-	public  List<RecommendedItem> getRecommendations(Integer user,Integer nbRecommendations ) throws TasteException 
+	public List<RecommendedItem> getRecommendations(Integer user,Integer nbRecommendations ) throws TasteException 
 	{
 
-
-			
 //		 In this example, we want to create a user-based recommender
 //		 compute the correlation coefficient between their interactions.
 			UserSimilarity similarity = new PearsonCorrelationSimilarity(model);

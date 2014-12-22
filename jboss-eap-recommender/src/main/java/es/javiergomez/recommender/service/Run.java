@@ -22,7 +22,7 @@ public class Run {
 		MyRecommender recommender;
 		List<RecommendedItem> recommendations;
 		
-		recommender = new MyUserBasedRecommender("src/main/resources/dataset.csv");
+		recommender = new MyUserBasedRecommender();
 		recommendations = recommender.getRecommendations(2, 3);
 		for (RecommendedItem recommendation : recommendations) {
 			  System.out.println(recommendation);
