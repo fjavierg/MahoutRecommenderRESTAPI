@@ -22,7 +22,7 @@ import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 
-@Stateless
+@Singleton
 public class MyUserBasedRecommender implements MyRecommender {
 
 	private static DataModel model;
