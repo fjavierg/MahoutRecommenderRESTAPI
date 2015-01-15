@@ -4,9 +4,7 @@ package es.javiergomez.recommender.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javax.ejb.Singleton;
@@ -29,14 +27,13 @@ public class MyUserBasedRecommender implements MyRecommender {
 
 	private static DataModel model;
 
-	public MyUserBasedRecommender() throws IOException, URISyntaxException {
+	public MyUserBasedRecommender() throws IOException {
 		super();
 //		 The first thing we have to do is load the data from the file
 		
 		URL res = MyUserBasedRecommender.class.getResource("/dataset.csv");
 
-//		this.model = new FileDataModel(new File(res.getPath()));
-		this.model = new FileDataModel(new File(res.toURI().getSchemeSpecificPart()));
+		this.model = new FileDataModel(new File(res.getPath()));
 	}
 	
 	
