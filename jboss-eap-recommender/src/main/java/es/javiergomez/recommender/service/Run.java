@@ -1,6 +1,7 @@
 package es.javiergomez.recommender.service;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import org.apache.mahout.cf.taste.common.TasteException;
@@ -16,8 +17,9 @@ public class Run {
 	 * @param args
 	 * @throws TasteException 
 	 * @throws IOException 
+	 * @throws URISyntaxException 
 	 */
-	public static void main(String[] args) throws IOException, TasteException {
+	public static void main(String[] args) throws IOException, TasteException, URISyntaxException {
 
 		MyRecommender recommender;
 		List<RecommendedItem> recommendations;
