@@ -13,8 +13,7 @@ What is it?
 
 It creates a Mahout recommender from dataset.csv and exposes a REST interface to get recommendations
 
-Run on Jboss server and execute http://127.0.0.1:8080/jboss-eap-recommender/rest/rec/2 to get 3 uuser-based 
-recommendations for user 2
+A Mahout-based collaborative filtering engine takes users’ preferences for items (“tastes”) and returns estimated preferences for other items. For example, a site that sells books or CDs could easily use Mahout to figure out, from past purchase data, which CDs a customer might be interested in listening to.
 
 
 System requirements
@@ -24,37 +23,6 @@ The application this project produces is designed to be run on Red Hat JBoss Ent
 
 All you need to build this project is Java 6.0 (Java SDK 1.6) or later, Maven 3.0 or later.
 
-_Note: This quickstart uses the H2 database included with JBoss EAP 6. It is a lightweight, relational example datasource that is used for examples only. It is not robust or scalable and should NOT be used in a production environment!_
- 
-Configure Maven
----------------
-
-If you have not yet done so, you must [Configure Maven](https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_MAVEN.md#configure-maven-to-build-and-deploy-the-quickstarts) before testing the quickstarts.
-
-
-Start the JBoss EAP Server
--------------------------
-
-1. Open a command prompt and navigate to the root of the JBoss EAP directory.
-2. The following shows the command line to start the server:
-
-        For Linux:   EAP_HOME/bin/standalone.sh
-        For Windows: EAP_HOME\bin\standalone.bat
-
- 
-Build and Deploy the Quickstart
--------------------------
-
-_NOTE: The following build command assumes you have configured your Maven user settings. If you have not, you must include Maven setting arguments on the command line. See [Build and Deploy the Quickstarts](../README.md#build-and-deploy-the-quickstarts) for complete instructions and additional options._
-
-1. Make sure you have started the JBoss EAP server as described above.
-2. Open a command prompt and navigate to the root directory of this quickstart.
-3. Type this command to build and deploy the archive:
-
-        mvn clean install jboss-as:deploy
-
-4. This will deploy `target/jboss-eap-recommender.war` to the running instance of the server.
- 
 
 Access the application 
 ---------------------
@@ -74,14 +42,6 @@ _Note:_ You will see the following warnings and errors in the server log. Hibern
         Sequence "HIBERNATE_SEQUENCE" not found; SQL statement: drop sequence hibernate_sequence [90036-168]
 
 
-Undeploy the Archive
---------------------
-
-1. Make sure you have started the JBoss EAP server as described above.
-2. Open a command prompt and navigate to the root directory of this quickstart.
-3. When you are finished testing, type this command to undeploy the archive:
-
-        mvn jboss-as:undeploy
 
 
 Run the Arquillian Tests 
@@ -97,16 +57,3 @@ _NOTE: The following commands assume you have configured your Maven user setting
 
         mvn clean test -Parq-jbossas-remote 
 
-
-Run the Quickstart in JBoss Developer Studio or Eclipse
--------------------------------------
-You can also start the server and deploy the quickstarts from Eclipse using JBoss tools. For more information, see [Use JBoss Developer Studio or Eclipse to Run the Quickstarts](https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/USE_JDBS.md#use-jboss-developer-studio-or-eclipse-to-run-the-quickstarts) 
-
-
-Debug the Application
-------------------------------------
-
-If you want to debug the source code or look at the Javadocs of any library in the project, run either of the following commands to pull them into your local repository. The IDE should then detect them.
-
-    mvn dependency:sources
-    mvn dependency:resolve -Dclassifier=javadoc
